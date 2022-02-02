@@ -1,0 +1,22 @@
+<style type="text/css">#hf-iframe {
+    border: 0;
+    height: 800px;
+    width: 100%;
+}
+</style>
+<script>
+  window.onmessage = function (e) {
+    if (e.data.indexOf('[iFrameSizer]') === 0) {
+      return;
+    }
+ 
+    var response = JSON.parse(e.data);
+    if (response.action === 'question-answered') {
+      var top = document.getElementById('hf-iframe').offsetTop;
+ 
+      document.body.scrollTop = top - 125;
+      document.documentElement.scrollTop = top - 125;
+   }
+  }
+</script>
+<p><iframe id="hf-iframe" src=https://covid19-moh.infermedica.com/pl/?header=false></iframe><script src=https://covid19-moh.infermedica.com/static/healthform/js/iframe-helper/iframe-helper.js></script></p>
